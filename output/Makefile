@@ -12,12 +12,11 @@ OBJCOPY     = avr-objcopy.exe
 BOOT        = 0x0000
 CFLAGS      = -Wall -std=c99 -Os -DF_CPU=$(CPU) -mmcu=$(MCU) -Wl,-Map,$(NAME).map -Wl,--section-start=.text=$(BOOT)
 
+
 default: compile
 
-all:
-	compile
-	flash
-	clean
+all: compile flash clean
+
 
 compile:
 	$(CC) $(CFLAGS) -c $(PRG).c -o $(PRG).o

@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "setbaud.h": "c"
+        "setbaud.h": "c",
+        "io.h": "c",
+        "sfr_defs.h": "c"
     }
 }
