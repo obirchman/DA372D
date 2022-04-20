@@ -65,7 +65,7 @@ int main(void){
         uint8_t ret = startReceive();
 		send_verify(ret);
 		/*
-		Do programmy things
+            if button is pressed send something.
 		*/
 	}
     return 0;
