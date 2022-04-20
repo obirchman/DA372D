@@ -2,6 +2,7 @@ import sys
 import time
 from digi.xbee.devices import Raw802Device
 from digi.xbee.devices import ZigBeeDevice
+from digi.xbee.models.message import XBeeMessage
 from digi.xbee.models.address import XBee64BitAddress
 
 # In order. THIS MIGHT BE INACCURATE.
@@ -45,23 +46,24 @@ def get_nodes():
     node2 = net.get_device_by_64(XBee64BitAddress(bytes.fromhex(MAC2)))  # Get second end bee
     if node2 is None: 
         print("Device with 64-bit addr: %s not found" % str(MAC2))
-    return node1  # Return the bees
+    return node2  # Return the bees
 
 
 # A placeholder for generating data to send
 def get_data():
-    return bytes(41)
+    return bytes.fromhex('41')
 
 
 #TODO add a receive function
 def main():
     e1 = get_nodes()
-    msg = 0
+    msg = 41
     while(1):
         coordinator.send_data_async(e1,get_data()) # Sends msg to bee e1
         time.sleep(1)
-        if(msg == 5):
-            msg = 0
+        reply = coordinator.read_data()
+        if(reply != None):
+            print(reply.data)
     return 0
     
     

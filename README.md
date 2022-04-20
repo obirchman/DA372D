@@ -5,3 +5,12 @@ Three main parts
 Software on PC for interacting with end nodes
 Software on first end nodes to perform a chosen task.
 Software on second end nodes to perform a chosen task.
+
+
+Atmega to Endnode
+    Rx = Rx
+    Tx = Tx
+
+Controller to BT
+    Rx = Tx
+    Tx = Rx
